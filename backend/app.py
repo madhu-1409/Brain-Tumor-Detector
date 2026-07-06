@@ -20,9 +20,6 @@ modelsDict = {
     "ResNet-50 Adv": "models/tumor_resnet50_adv.pth"
 }
 
-# NOTE: models are NOT loaded here anymore — loaded on-demand per request instead,
-# one at a time, to avoid holding all 4 in memory simultaneously (which exceeded 512MB).
-
 @app.route("/api/compare", methods=["POST"])
 def compare_models():
     try:
@@ -43,7 +40,6 @@ def compare_models():
                 "confidence": float(conf)
             }
 
-            # free this model from memory before loading the next one
             del model
             gc.collect()
 
