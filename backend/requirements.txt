@@ -1,4 +1,4 @@
---extra-index-url https://download.pytorch.org/whl/cpu
+--find-links https://download.pytorch.org/whl/torch_stable.html
 
 flask==3.0.0
 flask-cors==4.0.0
